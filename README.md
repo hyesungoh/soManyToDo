@@ -17,11 +17,15 @@
 
 다양한 FE 프레임워크의 차이점, 장점을 배우기 위해 `To Do` 앱 개발
 
+<br/>
+
 ## 선정 기준
 
 <img alt="stackoverflow 2021 survey" src="https://user-images.githubusercontent.com/26461307/140543503-0ed6a34d-b0ee-4f59-8a40-551f811200c6.png" width="200" align="right" />
 
 <p align="left"> <a href="https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-programming-scripting-and-markup-languages">Stackoverflow 2021 survey, most popular</a> 참고</p>
+
+<br/>
 
 ## API
 
@@ -32,3 +36,5 @@
 </div>
 
 Airtable API 사용
+
+<br/>
