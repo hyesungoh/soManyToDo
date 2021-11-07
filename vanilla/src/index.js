@@ -9,10 +9,24 @@ async function getToDos() {
     const response = await get("/todo");
     return response.data.records;
 }
+
 function clearAllToDos() {
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
+}
+
+async function deleteToDo(id) {
+    await del(`/todo/${id}`);
+    generateToDos();
+}
+
+function handleDeleteClick(e) {
+    const {
+        target: { parentNode },
+    } = e;
+
+    deleteToDo(parentNode.id);
 }
 
 async function generateToDos() {
@@ -27,12 +41,17 @@ async function generateToDos() {
         tempLi.innerHTML = name;
         tempLi.id = id;
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = "X";
+        deleteBtn.addEventListener("click", handleDeleteClick);
+
+        tempLi.appendChild(deleteBtn);
         list.appendChild(tempLi);
     });
 }
 
 async function createToDo(todoString) {
-    post("/todo", { fields: { name: todoString } });
+    await post("/todo", { fields: { name: todoString } });
     generateToDos();
 }
 
