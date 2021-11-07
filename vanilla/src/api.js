@@ -17,13 +17,13 @@ function interceptorRequestFulfilled(config) {
 instance.interceptors.request.use(interceptorRequestFulfilled);
 
 export function get(...args) {
-    instance.get(...args);
+    return instance.get(...args);
 }
 
 export function post(...args) {
-    instance.post(...args);
+    return instance.post(...args);
 }
 
 export function del(...args) {
-    instance.delete(...args);
+    return instance.delete(...args);
 }
