@@ -6,7 +6,7 @@ const form = document.querySelector("form");
 
 async function getToDos() {
     const response = await get("/todo?maxRecords=3&view=Grid%20view");
-    console.log(response);
+    console.log("나 리스폰스",response);
 }
 
 function generateToDos() {
