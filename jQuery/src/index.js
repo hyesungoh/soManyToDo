@@ -1,6 +1,7 @@
 import { bearerToken, baseUrl } from "./config";
 const list = $("#js-list")[0];
 const form = $("form");
+const input = $("input")[0];
 
 $.ajaxSetup({
     beforeSend: function (xhr) {
@@ -36,11 +37,19 @@ async function generateToDos() {
     });
 }
 
+async function createToDo(todoString) {
+    await $.post(`${baseUrl}/todo`, { fields: { name: todoString } });
+}
+
+async function handleSubmit(e) {
+    e.preventDefault();
+    await createToDo(input.value);
+    input.value = "";
+    generateToDos();
+}
+
 function init() {
-    form.submit(function (event) {
-        event.preventDefault();
-        console.log("asd");
-    });
+    form.submit(handleSubmit);
 
     generateToDos();
 }

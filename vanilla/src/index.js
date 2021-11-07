@@ -55,11 +55,10 @@ async function createToDo(todoString) {
     generateToDos();
 }
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
     e.preventDefault();
     createToDo(input.value);
     input.value = "";
-    generateToDos();
 }
 
 function init() {
