@@ -1,2 +1,8 @@
 /vanilla/src/config.js
 /vanilla/dist/main.js
+/vanilla/node_modules
+
+
+/jQuery/src/config.js
+/jQuery/dist/main.js
+/jQuery/node_modules
