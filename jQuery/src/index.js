@@ -1,5 +1,5 @@
 import { bearerToken, baseUrl } from "./config";
-const list = $("#js-list")[0];
+const LIST = "#js-list";
 const form = $("form");
 const input = $("input")[0];
 
@@ -15,9 +15,22 @@ async function getToDos() {
 }
 
 function clearToDos() {
-    while (list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
+    $(LIST).empty();
+}
+
+async function deleteToDo(id) {
+    await $.ajax({
+        type: "DELETE",
+        url: `${baseUrl}/todo/${id}`,
+    });
+    generateToDos();
+}
+
+function handleDeleteClick(e) {
+    const {
+        target: { parentNode },
+    } = e;
+    deleteToDo(parentNode.id);
 }
 
 async function generateToDos() {
@@ -33,7 +46,12 @@ async function generateToDos() {
         tempLi.innerHTML = name;
         tempLi.id = id;
 
-        list.appendChild(tempLi);
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = "X";
+        deleteBtn.addEventListener("click", handleDeleteClick);
+
+        tempLi.appendChild(deleteBtn);
+        $(LIST).append(tempLi);
     });
 }
 
@@ -50,7 +68,6 @@ async function handleSubmit(e) {
 
 function init() {
     form.submit(handleSubmit);
-
     generateToDos();
 }
 
