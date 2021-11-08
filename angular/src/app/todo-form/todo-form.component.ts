@@ -17,7 +17,7 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit = (): void => {
-    this.todoDataService.createTodo(this.todoForm.value['todo']);
+    this.todoDataService.createTodo(this.todoForm.value['todo'])
     this.todoForm.reset();
   };
 }

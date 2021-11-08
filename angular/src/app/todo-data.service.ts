@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 
 import { IGetToDos, IToDo } from './todo';
 import { environment } from 'src/environments/environment';
@@ -9,18 +8,31 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class TodoDataService {
-  todos: IToDo[] = [{ id: '123', fields: { name: 'ㅎㅇ' } }];
+  todos: IToDo[] = [];
 
   constructor(private http: HttpClient) {}
 
-  getTodos = (): Observable<IGetToDos> => {
-    return this.http.get<IGetToDos>(`${environment.baseUrl}/todo`);
+  refreshTodos = () => {
+    this.http
+      .get<IGetToDos>(`${environment.baseUrl}/todo`)
+      .subscribe((data) => {
+        this.todos.splice(0, this.todos.length);
+        this.todos.push(...data.records);
+      });
   };
 
-  createTodo = (todoString: string) => {
-    this.http.post(`${environment.baseUrl}/todo`, {
-      headers: { Authorization: `Bearer ${environment.apiKey}` },
-      fields: { name: todoString },
-    });
+  getTodos = () => {
+    this.refreshTodos();
+    return this.todos;
+  };
+
+  createTodo = async (todoString: string) => {
+    this.http
+      .post<IGetToDos>(`${environment.baseUrl}/todo`, {
+        fields: { name: todoString },
+      })
+      .subscribe((_) => {
+        this.refreshTodos();
+      });
   };
 }
