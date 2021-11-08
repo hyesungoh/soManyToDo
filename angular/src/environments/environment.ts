@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://api.airtable.com/v0/app5AO0SumKR9cNKp',
+  apiKey: 'keyV0wT6S47gp664x',
 };
 
 /*

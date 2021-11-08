@@ -1,3 +1,10 @@
 export interface IToDo {
-  name: string;
+  id: string;
+  fields: {
+    name: string;
+  };
+}
+
+export interface IGetToDos {
+  records: IToDo[];
 }

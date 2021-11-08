@@ -13,7 +13,7 @@ export class TodoListComponent implements OnInit {
   todos: IToDo[] = [];
 
   getTodos = () => {
-    this.todos = this.todoDataService.getTodos();
+    this.todoDataService.getTodos().subscribe((todos) => (this.todos = todos.records));
   };
 
   ngOnInit(): void {
