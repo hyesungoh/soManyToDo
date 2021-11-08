@@ -1,3 +1,7 @@
 <ul *ngFor="let todo of todos">
-  <li>{{ todo.fields.name }}</li>
+  <li id="{{ todo.id }}">
+    {{ todo.fields.name }}
+
+    <button (click)="onDeleteClick($event)">X</button>
+  </li>
 </ul>

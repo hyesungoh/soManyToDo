@@ -35,4 +35,10 @@ export class TodoDataService {
         this.refreshTodos();
       });
   };
+
+  deleteTodo = (todoId: string) => {
+    this.http
+      .delete<IGetToDos>(`${environment.baseUrl}/todo/${todoId}`)
+      .subscribe((_) => this.refreshTodos());
+  };
 }

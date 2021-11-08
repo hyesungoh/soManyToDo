@@ -16,6 +16,12 @@ export class TodoListComponent implements OnInit {
     this.todos = this.todoDataService.getTodos();
   };
 
+  onDeleteClick = (e: Event) => {
+    const { parentNode } = e.target as Element;
+    const { id } = parentNode as Element;
+    this.todoDataService.deleteTodo(id);
+  };
+
   ngOnInit(): void {
     this.getTodos();
   }
