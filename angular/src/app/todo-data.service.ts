@@ -14,12 +14,13 @@ export class TodoDataService {
   constructor(private http: HttpClient) {}
 
   getTodos = (): Observable<IGetToDos> => {
-    return this.http.get<IGetToDos>(`${environment.baseUrl}/todo`, {
-      headers: { Authorization: `Bearer ${environment.apiKey}` },
-    });
+    return this.http.get<IGetToDos>(`${environment.baseUrl}/todo`);
   };
 
   createTodo = (todoString: string) => {
-    // this.todos.push({ name: todoString });
+    this.http.post(`${environment.baseUrl}/todo`, {
+      headers: { Authorization: `Bearer ${environment.apiKey}` },
+      fields: { name: todoString },
+    });
   };
 }
