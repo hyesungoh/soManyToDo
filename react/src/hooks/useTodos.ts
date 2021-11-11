@@ -24,7 +24,17 @@ function useTodos() {
     refreshTodos();
   }, []);
 
-  return { todos };
+  const createTodo = async (todoString: string) => {
+    await post("/todo", { fields: { name: todoString } });
+    refreshTodos();
+  };
+
+  const deleteTodo = async (todoId: string) => {
+    await del(`/todo/${todoId}`);
+    refreshTodos();
+  };
+
+  return { todos, createTodo, deleteTodo };
 }
 
 export default useTodos;
