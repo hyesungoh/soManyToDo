@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# To Dos with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 사용해보며 느낀 점
 
-## Available Scripts
+앵귤러를 한 뒤 만져보는 리액트는 당연히 기존에 다뤘던 라이브러리인지라 편하기도 하지만 다른 방면으로 생각할 수 있게끔 된 것 같다.
 
-In the project directory, you can run:
+첫 번째로 프레임워크와 라이브러리의 차이에서 오는 규약이 없는 것이 장점이자 단점으로 여겨졌다. 앵귤러 리드미에서도 기술했지만, 새로운 컴포넌트를 만들 때 파일 하나만 만들면 되는 것은 매우 편한 일이지만 여기에서 오는 "어디에 만들지"에 대한 규약은 확실히 필요해보인다.
+나는 기존에 사용해왔던 파일 유형에 따른 분류를 하였지만, 해당 부분은 리액트, 앵귤러의 두 생태계의 단점이자 장점으로 작용한다는 것을 느끼게 되었다.
 
-### `yarn start`
+두 번째로 전역 상태에 대한 것이다. 앵귤러의 경우 service를 이용해 여러 컴포넌트가 동일한 상태 값을 공유할 수 있었지만, 리액트의 경우 추가적인 라이브러리를 사용하지 않는 이상 부모 컴포넌트에서 props로 내려주어야 동일한 상태값을 공유할 수 있다. 이를 통해 나는 앵귤러의 service처럼 리액트 hook을 사용하였고 이를 부모 컴포넌트에서 사용해 자식 컴포넌트에 내려주었다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+세 번째로 리액트가 확실히 직관적이고 세련되고, 보다 html의 원형을 지킨 문법을 사용하는 것이다. 앵귤러의 경우 \*ngFor, ngSubmit등 앞에 ng를 붙혀 조금 더 가시적으로 앵귤러 로직 처리인 것을 알 수 있지만 나는 개인적으로 리액트의 todos.map, onSubmit 등의 jsx 사용법이 읽기 좋기도 하며 작성법이 일관적이다라고 생각하였다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+물론 상대적으로 느껴지는 리액트의 단점도 있었다. UI와 로직의 분리가 상대적으로 힘들다고 느꼈는데, 그 이유는 앵귤러의 경우 service 데이터에 관한 부분을, ts 파일에 로직을 위임하고 UI는 html, css에만 위임을 할 수 있는 방면에
 
-### `yarn test`
+리액트의 hooks에 로직과 데이터에 관한 부분을 위임하여도 한계가 있을 뿐더러 (onClick 등) 러닝커브가 존재한다는 점이었다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> container-presenter 패턴등을 이용해 분리를 야기할 수 있지만 이 또한 러닝 커브가 존재하며 라이브러리에서 공식적으로 사용을 권하는 방법이 아닌 단점이 있다고 생각한다.
 
-### `yarn build`
+앞으로 vue, svelte를 경험한 후에 더욱 상세히 기술할 수 있을 것 같다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
