@@ -1,24 +1,23 @@
-# vue
+# To Dos with Vue
 
-## Project setup
-```
-npm install
-```
+## 사용해보며 느낀 점
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 배운 점
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- ### few cli
 
-### Lints and fixes files
-```
-npm run lint
+```bash
+# cli 설치
+npm i -g @vue/cli
+
+# Project 생성
+vue create projectName
+
+# 서버 실행
+npm start serve
+yarn serve
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- ### Using component
+
+`.vue` 파일 생성
