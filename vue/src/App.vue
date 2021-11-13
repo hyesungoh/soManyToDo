@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>oh to dos vue</h1>
-    <todo-list />
-    <todo-form />
+    <TodoList />
+    <TodoForm />
   </div>
 </template>
 
