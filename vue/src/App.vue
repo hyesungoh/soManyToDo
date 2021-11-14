@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>oh to dos vue</h1>
-    <TodoList :todoList="todoList" />
+    <TodoList :todoList="todoList" :deleteTodo="deleteTodo"/>
     <TodoForm :createTodo="createTodo" />
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import TodoForm from "./components/TodoForm.vue";
 import TodoList from "./components/TodoList.vue";
-import { get, post } from "./lib/api";
+import { get, post, del } from "./lib/api";
 
 export default {
   name: "App",
@@ -30,6 +30,10 @@ export default {
     },
     async createTodo(todoString) {
       await post("/todo", { fields: { name: todoString } });
+      this.refreshTodos();
+    },
+    async deleteTodo(todoId) {
+      await del(`/todo/${todoId}`);
       this.refreshTodos();
     },
   },
