@@ -8,12 +8,13 @@
 <script>
 export default {
   name: "TodoForm",
+  props: ["createTodo"],
   data() {
     return { input: "" };
   },
   methods: {
     onSubmit: function () {
-      console.log(this.input);
+      this.createTodo(this.input);
       this.input = "";
     },
   },

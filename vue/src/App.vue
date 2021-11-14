@@ -2,14 +2,14 @@
   <div>
     <h1>oh to dos vue</h1>
     <TodoList :todoList="todoList" />
-    <TodoForm />
+    <TodoForm :createTodo="createTodo" />
   </div>
 </template>
 
 <script>
 import TodoForm from "./components/TodoForm.vue";
 import TodoList from "./components/TodoList.vue";
-import { get } from "./lib/api";
+import { get, post } from "./lib/api";
 
 export default {
   name: "App",
@@ -27,6 +27,10 @@ export default {
       const response = await get("/todo");
       this.todoList.splice(0, this.todoList.length);
       this.todoList.push(...response.records);
+    },
+    async createTodo(todoString) {
+      await post("/todo", { fields: { name: todoString } });
+      this.refreshTodos();
     },
   },
   mounted() {
