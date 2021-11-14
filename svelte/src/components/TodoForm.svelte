@@ -1,6 +1,13 @@
-<script></script>
+<script>
+  let input = "";
 
-<form>
-  <input type="text" />
+  function onSubmit() {
+    console.log(input);
+    input = "";
+  }
+</script>
+
+<form on:submit|preventDefault={onSubmit}>
+  <input type="text" bind:value={input} />
   <button type="submit">확인</button>
 </form>
