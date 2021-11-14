@@ -25,7 +25,8 @@ export default {
   methods: {
     async refreshTodos() {
       const response = await get("/todo");
-      this.todoList = response.records;
+      this.todoList.splice(0, this.todoList.length);
+      this.todoList.push(...response.records);
     },
   },
   mounted() {

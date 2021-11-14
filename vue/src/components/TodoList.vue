@@ -1,7 +1,9 @@
 <template>
-  <ul :v-for="todo in this.todos">
-    <li v-if="todo">{{ todo.id }}</li>
-  </ul>
+  <div>
+    <ul v-for="todo in todos" :key="todo.id">
+      <li>{{ todo.fields.name }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
