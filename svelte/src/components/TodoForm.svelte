@@ -1,8 +1,10 @@
 <script>
+  import { todos } from "../store/todo";
+
   let input = "";
 
   function onSubmit() {
-    console.log(input);
+    todos.createTodo(input);
     input = "";
   }
 </script>

@@ -47,3 +47,6 @@ npm run dev
 ```
 
 매우 간단한 방법으로 component를 생성, 개발, 사용이 가능하다
+
+- ### Store
+

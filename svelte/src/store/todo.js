@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import { get } from "../api";
+import { get, post } from "../api";
 
 function todoAction() {
   const { subscribe, set, update } = writable([]);
@@ -9,7 +9,12 @@ function todoAction() {
     set(response.records);
   };
 
-  return { subscribe, refreshTodo };
+  const createTodo = async (todoString) => {
+    await post("/todo", { fields: { name: todoString } });
+    refreshTodo();
+  };
+
+  return { subscribe, refreshTodo, createTodo };
 }
 
 export const todos = todoAction();
