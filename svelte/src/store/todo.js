@@ -5,12 +5,11 @@ function todoAction() {
   const { subscribe, set, update } = writable([]);
 
   const refreshTodo = async () => {
-    console.log("asdf");
     const response = await get("/todo");
-    console.log(response);
+    set(response.records);
   };
 
   return { subscribe, refreshTodo };
 }
 
-export const todo = todoAction();
+export const todos = todoAction();

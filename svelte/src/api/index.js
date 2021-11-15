@@ -38,10 +38,8 @@ instance.interceptors.response.use(
   responseRejectedInterceptor
 );
 
-export const get = (...args) => {
-  return instance.get(...args);
-};
+export const get = (...args) => instance.get(...args);
 
-// export const post = (...args) => instance.post(...args);
+export const post = (...args) => instance.post(...args);
 
-// export const del = (...args) => instance.delete(...args);
+export const del = (...args) => instance.delete(...args);
