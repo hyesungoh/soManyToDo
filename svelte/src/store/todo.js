@@ -1,8 +1,8 @@
 import { writable } from "svelte/store";
-import { get, post } from "../api";
+import { get, post, del } from "../api";
 
 function todoAction() {
-  const { subscribe, set, update } = writable([]);
+  const { subscribe, set } = writable([]);
 
   const refreshTodo = async () => {
     const response = await get("/todo");
@@ -14,7 +14,12 @@ function todoAction() {
     refreshTodo();
   };
 
-  return { subscribe, refreshTodo, createTodo };
+  const deleteTodo = async (todoId) => {
+    await del(`/todo/${todoId}`);
+    refreshTodo();
+  };
+
+  return { subscribe, refreshTodo, createTodo, deleteTodo };
 }
 
 export const todos = todoAction();

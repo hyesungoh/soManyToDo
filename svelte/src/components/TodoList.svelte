@@ -5,10 +5,19 @@
   onMount(() => {
     todos.refreshTodo();
   });
+
+  function onClickDelete(e) {
+    const { id } = e.target.parentNode;
+    todos.deleteTodo(id);
+  }
 </script>
 
 <ul>
   {#each $todos as todo (todo.id)}
-    <li>{todo.fields.name}</li>
+    <li id={todo.id}>
+      {todo.fields.name}
+
+      <button on:click={onClickDelete}>X</button>
+    </li>
   {/each}
 </ul>
