@@ -38,3 +38,12 @@
 Airtable API 사용
 
 <br/>
+
+## 자세히 보기
+
+- [Vanilla](https://github.com/hyesungoh/soManyToDos/tree/main/vanilla)
+- [jQuery](https://github.com/hyesungoh/soManyToDos/tree/main/jQuery)
+- [Angular](https://github.com/hyesungoh/soManyToDos/tree/main/angular)
+- [React](https://github.com/hyesungoh/soManyToDos/tree/main/react)
+- [Vue](https://github.com/hyesungoh/soManyToDos/tree/main/vue)
+- [Svelte](https://github.com/hyesungoh/soManyToDos/tree/main/svelte)
