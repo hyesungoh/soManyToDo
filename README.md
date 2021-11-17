@@ -13,6 +13,13 @@
 
 </p>
 
+<p>
+
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/Gatsby-663399?style=for-the-badge&logo=Gatsby&logoColor=white"/>
+
+</p>
+
 </div>
 
 다양한 FE 프레임워크의 차이점, 장점을 배우기 위해 `To Do` 앱 개발
