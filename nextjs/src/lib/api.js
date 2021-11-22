@@ -4,8 +4,6 @@ const instance = axios.create({
   baseURL: "https://api.airtable.com/v0/app5AO0SumKR9cNKp",
 });
 
-console.log(process.env.NEXT_PUBLIC_API_KEY);
-
 const requestInterceptor = (config) => ({
   ...config,
   headers: {

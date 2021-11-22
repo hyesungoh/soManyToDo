@@ -2,9 +2,9 @@ import useSWR from "swr";
 import { fetcher } from "../lib/fetcher";
 
 function useGetTodos() {
-  const { data } = useSWR("/todo", fetcher);
+  const { data, error } = useSWR("/todo", fetcher);
 
-  return { data };
+  return { data, error };
 }
 
 export default useGetTodos;
