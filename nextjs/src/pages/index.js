@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import TodoForm from "../components/todoForm";
 import TodoList from "../components/todoList";
