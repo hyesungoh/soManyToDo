@@ -1,7 +1,12 @@
-import useGetTodos from "../hooks/useGetTodos";
+import useTodos from "../hooks/useTodos";
 
 function TodoList() {
-  const { data, error } = useGetTodos();
+  const { data, error, deleteTodo } = useTodos();
+
+  function onClickDelete(e) {
+    const { id } = e.currentTarget.parentNode;
+    deleteTodo(id);
+  }
 
   if (error) return <div>error</div>;
   if (!data) return <div>loading...</div>;
@@ -9,7 +14,10 @@ function TodoList() {
   return (
     <ul>
       {data.records.map((todo) => (
-        <li key={todo.id}>{todo.fields.name}</li>
+        <li key={todo.id} id={todo.id}>
+          {todo.fields.name}
+          <button onClick={onClickDelete}>X</button>
+        </li>
       ))}
     </ul>
   );
