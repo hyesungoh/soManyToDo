@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# To Dos with Next.js
 
-## Getting Started
+## 사용해보며 느낀 점
 
-First, run the development server:
+React 프레임워크답게, React to do와 상당히 유사한 방법으로 개발하였다.
+
+data fetch를 ssr을 지원하도록 개발할까 했으나, 지속적으로 업데이트되는 특성을 가진 해당 프로젝트에서는 적합하지 않다고 판단되어 적용하지 않았다.
+
+더욱 자세히 공부하기 위해서는 다른 주제로 개발을 해야겠다고 생각되었지만, app을 생성하고 사용하는데 기본을 익힐 수 있어 만족스러운 경험이였다.
+
+## 배운 점
+
+- ### few cli
 
 ```bash
-npm run dev
+npx create-next-app@latest
 # or
-yarn dev
+yarn create next-app
+
+# TypeScript
+npx create-next-app@latest --ts
+# or
+yarn create next-app --typescript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ### Data fetching
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+[`getInitialProps`, `getStaticProps`, `getStaticPaths`, `getServerSideProps`](https://yceffort.kr/2020/03/nextjs-02-data-fetching)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+fetch할 데이터에 대해 서버사이드 렌더링을 가능하게 하는 방법들이 있다. 하지만 해당 프로젝트에서는 적합하지 않다고 판단되어 사용하지는 않았다.
