@@ -49,3 +49,7 @@ Airtable API 사용
 - [Vue](https://github.com/hyesungoh/soManyToDos/tree/main/vue)
 - [Svelte](https://github.com/hyesungoh/soManyToDos/tree/main/svelte)
 - [NextJs](https://github.com/hyesungoh/soManyToDos/tree/main/nextjs)
+
+## 결론
+
+[React 문서에서 확인 가능](https://github.com/hyesungoh/soManyToDos/tree/main/react#%EB%82%B4-%EA%B2%B0%EB%A1%A0)
