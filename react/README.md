@@ -17,4 +17,165 @@
 
 > container-presenter 패턴등을 이용해 분리를 야기할 수 있지만 이 또한 러닝 커브가 존재하며 라이브러리에서 공식적으로 사용을 권하는 방법이 아닌 단점이 있다고 생각한다.
 
-앞으로 vue, svelte를 경험한 후에 더욱 상세히 기술할 수 있을 것 같다.
+~~앞으로 vue, svelte를 경험한 후에 더욱 상세히 기술할 수 있을 것 같다.~~
+
+#### vue, svelte 이후 느낀 점
+
+먼저 vue와 svelte를 간단하게나마 사용한 후 내가 느낀 결론을 말하자면 "서비스를 목표로하는 프로젝트에서는 계속 React 진형을 택할 것이다" 라는 것이다.
+
+이유는 다음과 같다.
+
+- JSX
+
+Vue, Svelte도 물론 jsx를 지원하지만 가장 자바스크립트의 원형과 비슷한 것은 React라고 생각되었다.
+
+<details>
+
+<summary> if </summary>
+
+```jsx
+// react
+<p> {condition ? "TRUE" : "FALSE"} </p>
+```
+
+```vue
+// vue
+<p v-if="condition">TRUE</p>
+<p v-else>FALSE</p>
+```
+
+```svelte
+<!-- svelte -->
+{#if condition}
+<p>TRUE</p>
+{:else}
+<p>FALSE</p>
+{/if}
+```
+
+</details>
+
+<details>
+
+<summary> for </summary>
+
+```jsx
+// react
+{datas.map(data) => <p key={ data.id }>{ data }</p>}
+```
+
+```vue
+// vue
+<p v-for="data in datas" :key="data.id">{{ data }}</p>
+```
+
+```svelte
+<!-- svelte -->
+{#each datas of data}
+<p>{ data }</p>
+{/each}
+```
+
+</details>
+
+React, Svelte, Vue 순으로 자바스크립트의 원형과 비슷하다고 생각된다.
+
+물론 새로운 템플릿 문법을 배우는 것은 큰 러닝커브를 가진 것은 아니지만 가장 원형을 지킨 모습이 내가 느끼기에는 가장 읽기 편하다고 생각되었다.
+
+이 때문에 Vue보다 Svelte가 더욱 취향에 맞는 문법을 사용한다고 느꼈으며, 이는 Django, RoR, JSP 등에서 사용해보았던 템플릿 문법과 비슷하여 그러지 않나 생각된다.
+
+- SSR
+
+마찬가지로 Vue는 Nuxt.js를 이용해 SSR을 구현, Svelte는 자체적으로 구현할려는 모습과 함께 Sapper를 이용해 구현할 수 있다고 한다.
+
+하지만 모두 비교하였을 때 Next.js의 커뮤니티가 월등하다고 생각되었다.
+
+![스크린샷 2021-11-27 오후 11 04 28](https://user-images.githubusercontent.com/26461307/143684755-6d8499ca-bffa-421b-bc51-541eb61b9725.png)
+
+이처럼 SSR을 고려해야될 프로젝트일 시는 Next.js만한 선택지가 없다고 생각되었다.
+
+---
+
+이와 달리 기존에 React의 장점으로 생각되었던 점이 퇴색된 것도 있는데 이는 다음과 같다.
+
+- 생태계 크기
+
+물론 다른 프레임워크 혹은 라이브러리와 비교하였을 때 React의 생태계가 큰 것은 맞지만 Angular, Vue의 생태계의 크기 또한 상당히 큰 편이였으며 공식 문서가 상당히 잘 구성되어 있었다.
+
+크기에서 비롯되는 장점이 있긴하겠지만 이는 엄청 큰 효과를 볼 수 있을 정도는 아니라고 생각되었다.
+
+- Virtual DOM
+
+다양한 블로그 게시물을 보면 React의 장점으로 Virtual DOM을 꼽는다.
+
+나도 이를 보고 무조건적으로 렌더링 속도가 빠르다고 생각하였으나, 다른 생태계의 공식문서와 [해당 논문](https://www.doria.fi/bitstream/handle/10024/177433/levlin_mattias.pdf?sequence=2&isAllowed=y)을 본 후 이는 절대적으로 빠른 것이 아니고 일반적으로 빠른 성능을 보여주는 것이며 상황에따라 다른 프레임워크가 더 빠를 때도 있다는 것을 알게 되었다.
+
+> 물론 Angular, Vue 또한 Virtual DOM을 사용한다.
+
+Svelte의 경우 컴파일 과정을 거쳐 외과적으로 DOM을 수정한다고 기술하고 있다.
+
+> Svelte의 문서에서 상당히 많은 것을 배웠는데, 일단 Virtual DOM이 해결하고자 하는 것은 선언적 그리고 상태 중심 UI 개발 환경을 제공하는 것이였다. 이는 충분히 좋은 성능으로 상태 전환에 대해 생각하지 않고 개발할 수 있는 환경을 제공하고 있다.
+
+> 하지만 Svelte는 Virtual DOM을 사용하지 않고도 유사하게 프로그래밍할 수 있다는 것을 증명, 해결하고 있다. [해당 문서의 링크](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
+
+- Data binding
+
+이도 마찬가지로 React가 단방향의 data binding flow를 가지고 있어 디버깅에 용이하다고 여러 게시물에서 확인하였다.
+
+하지만 양방향 data binding flow를 경험해보니 나쁘지 않을뿐더러 괜찮은 경험이였다.
+
+이는 매우 작은 서비스라 겪은 경험일 가능성이 크지만, 상대적으로 엄청난 장점이라고 까지는 생각되지 않았다.
+
+## 내 결론
+
+간단히 내가 앞으로 프로젝트를 진행한다고 하였을 시, 선택하게 될 프레임워크 혹은 라이브러리는 다음과 같이 정리 할 수 있을 것 같다.
+
+#### 서비스 목적, SSR 필요 상황
+
+Next.js
+
+<details>
+
+<summary> 이유 </summary>
+
+SSR 프레임워크 생태계에서 가장 큰 크기를 보유중이며 현재 내 상황에서 제일 러닝커브가 낮은 솔루션이다.
+
+</details>
+
+#### 서비스 목적, 빠른 개발 필요, SSR 불필요 상황
+
+React
+
+<details>
+
+<summary> 이유 </summary>
+
+현재 내 상황에서 제일 잘 다룰 수 있는 툴임과 동시에 사용할 수 있는 써드파티 라이브러리가 매우 많다.
+
+</details>
+
+#### 서비스 목적, 상당히 큰 규모, OOP
+
+Angular
+
+<details>
+
+<summary> 이유 </summary>
+
+엔터프라이즈 레벨의 서비스에 상당히 적합할 것 같으며, 팀원이 모두 빠른 러닝커브를 자랑하거나 Angular를 사용한 경험이 있다면 도입해볼만 한 것 같다.
+
+</details>
+
+#### 빠른 프로토타이핑
+
+Svelte
+
+<details>
+
+<summary> 이유 </summary>
+
+간단한 어플리케이션을 개발해보며 상당히 만족스러운 개발자 경험을 받았다. 또한 문서가 딱 내 스타일에 맞게 작성되어 있어 러닝커브 또한 vue보다 낮다고 느꼈다.
+
+물론 생태계가 제일 작고 제일 신생 서비스인지라 dependency에 대한 고려를 해야겠지만, 빠른 프로토타이핑에 적합하다고 생각되었으며 앞으로의 방향과 추이를 확인해봄직 하다고 생각되었다.
+
+</details>
